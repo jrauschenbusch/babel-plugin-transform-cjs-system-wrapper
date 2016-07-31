@@ -15,8 +15,8 @@ export default function ({ types: t }) {
     })
   `);
 
-  const buildDefineGlobal = template(`
-     var define, global = this, GLOBAL = this;
+  const buildGlobal = template(`
+     var global = this, GLOBAL = this;
   `);
 
   const buildStaticFilePaths = template(`
@@ -111,7 +111,7 @@ export default function ({ types: t }) {
             }));
           }
 
-          node.body.unshift(buildDefineGlobal());
+          node.body.unshift(buildGlobal());
 
           let { globals } = opts;
           if (globals && Object.keys(globals).length) {
